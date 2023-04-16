@@ -1,5 +1,8 @@
 FROM alpine
 
+
+WORKDIR /etc/mysql
+
 # Install Mariadb
 RUN apk add --no-cache mariadb mariadb-client
 
