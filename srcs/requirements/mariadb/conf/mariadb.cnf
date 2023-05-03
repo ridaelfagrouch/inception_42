@@ -1,2 +1,10 @@
-[mysqld]
-bind-address = 0.0.0.0
+FROM debian:buster
+
+RUN apt-get update -y && \
+    apt-get install -y mariadb-server
+
+COPY ./tools/my.cnf /etc/mysql/conf.d/my.cnf
+
+EXPOSE 3306
+
+CMD ["mysqld", "--user=mysql"]
