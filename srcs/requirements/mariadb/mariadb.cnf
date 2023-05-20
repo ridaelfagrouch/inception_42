@@ -1,0 +1,5 @@
+[mysqld]
+# Set the bind address to 0.0.0.0 to allow connections from all IP addresses
+bind-address = 0.0.0.0
+
+
