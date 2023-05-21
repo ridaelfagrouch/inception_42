@@ -22,10 +22,8 @@ RUN apt-get update && apt-get install -y mariadb-server
 # COPY mariadb.cnf /etc/mysql/mariadb.cnf
 
 # Set the ownership and permissions for the configuration file
-# RUN chown mysql:mysql /etc/mysql/mariadb.cnf
-# RUN chmod 644 /etc/mysql/mariadb.cnf
-
-
+RUN chown mysql:mysql /etc/mysql/mariadb.cnf
+RUN chmod 644 /etc/mysql/mariadb.cnf
 
 # Copy the custom initialization script
 COPY mariadb.sh /docker-entrypoint-initdb.d/mariadb.sh

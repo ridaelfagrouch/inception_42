@@ -1,20 +1,9 @@
 #!/bin/bash
 
-# # Install Mariadb and dependencies
-# apt-get update && apt-get install -y mariadb-server mariadb-client 
-
-# # Create a data directory
-# mkdir -p /var/lib/mysql
-
-# # Set ownership and permissions
-# chown -R mysql:mysql /var/lib/mysql
-# chmod 777 /var/lib/mysql
-
-# exec "$@"
-
-# -----------------------------------------------------
-
 /etc/init.d/mysql start
+
+# Set the bind address to 0.0.0.0 to allow connections from all IP addresses
+sed -i "s/bind-address.*/bind-address = 0.0.0.0/g" /etc/mysql/mariadb.conf.d/50-server.cnf
 
 # Execute your custom initialization commands here
 # For example, create a new database and user
