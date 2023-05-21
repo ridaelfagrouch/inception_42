@@ -5,21 +5,16 @@ services:
     build: ./requirements/nginx
     ports:
       - "443:443"
-    # volumes:
-    #   - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
-  #     - ./wordpress:/var/www/html:delegated
-  # mariadb:
-  #   build:
-  #     context: .
-  #     dockerfile: mariadb.dockerfile
-  #   environment:
-  #     MARIADB_DATABASE: wp
-  #     MARIADB_USER: wp
-  #     MARIADB_PASSWORD: secret
-  #     MARIADB_ROOT_PASSWORD: secret
-  # php:
-  #   build:
-  #     context: .
-  #     dockerfile: php.dockerfile
-  #   volumes:
-  #    - ./wordpress:/var/www/html:delegated
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./wordpress:/var/www/html:delegated
+  mariadb:
+    build: ./requirements/mariadb
+    environment:
+      MARIADB_DATABASE: mydatabase
+      MARIADB_USER: rel-fagr
+      MARIADB_PASSWORD: 123456789
+  wordpress: 
+    build: ./requirements/wordpress
+    volumes:
+     - ./wordpress:/var/www/html:delegated
