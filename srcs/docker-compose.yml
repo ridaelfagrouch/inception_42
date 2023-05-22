@@ -1,20 +1,36 @@
 version: '3.3'
 
+networks:
+  inception:
+    name: inception
+
 services:
   nginx:
     build: ./requirements/nginx
     ports:
       - "443:443"
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
       - ./wordpress:/var/www/html:delegated
+    depends_on:
+      - wordpress
+    networks:
+      - inception
+    restart: always
   mariadb:
     build: ./requirements/mariadb
     environment:
       MARIADB_DATABASE: mydatabase
       MARIADB_USER: rel-fagr
       MARIADB_PASSWORD: 123456789
+    networks:
+      - inception
+    restart: always
   wordpress: 
     build: ./requirements/wordpress
     volumes:
      - ./wordpress:/var/www/html:delegated
+    depends_on:
+      - mariadb
+    networks:
+      - inception
+    restart: always
