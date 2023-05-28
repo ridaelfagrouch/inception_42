@@ -10,7 +10,7 @@ define( 'DB_USER', 'rel-fagr' );
 define( 'DB_PASSWORD', '123456789' );
 
 /** MySQL hostname */
-define( 'DB_HOST', 'mariadb' );
+define( 'DB_HOST', 'mariadb:3306' );
 
 /** Database Charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8mb4' );
@@ -34,6 +34,6 @@ define( 'NONCE_KEY',        '' );
 define( 'AUTH_SALT',        '' );
 define( 'SECURE_AUTH_SALT', '' );
 define( 'LOGGED_IN_SALT',   '' );
-define( 'NONCE_SALT',       '' );httpd.conf
+define( 'NONCE_SALT',       '' );
 
 /**#@-*/

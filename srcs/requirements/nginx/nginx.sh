@@ -29,10 +29,17 @@ server {
     ssl_certificate /etc/nginx/ssl/test.crt;
     ssl_certificate_key /etc/nginx/ssl/test.key;
 
+    root /var/www/html;
     location / {
-        root /usr/share/nginx/html;
         index index.html;
     }
+
+    location ~ .php {
+        fastcgi_pass wordpress:9000;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;
+        include fastcgi_params;
+        }
 }
 EOF
 

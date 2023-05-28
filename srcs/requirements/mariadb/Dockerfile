@@ -25,13 +25,14 @@ RUN apt-get update && apt-get install -y mariadb-server
 RUN chown mysql:mysql /etc/mysql/mariadb.cnf
 RUN chmod 644 /etc/mysql/mariadb.cnf
 
+# Remove the existing 'mydatabase' if it exists
+# RUN echo "DROP DATABASE IF EXISTS mydatabase;" | mysql -uroot -p"${123456789}"
+
 # Copy the custom initialization script
 COPY mariadb.sh /docker-entrypoint-initdb.d/mariadb.sh
 
-ENTRYPOINT ["bash", "/docker-entrypoint-initdb.d/mariadb.sh"]
+CMD ["bash", "/docker-entrypoint-initdb.d/mariadb.sh"]
 # Set executable permissions for the initialization script
 # RUN chmod +x /docker-entrypoint-initdb.d/mariadb.sh
 
 # Start the MariaDB service
-CMD ["mysqld"]
-
