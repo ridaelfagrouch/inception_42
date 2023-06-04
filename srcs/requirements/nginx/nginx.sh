@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Set domain name
-DOMAIN_NAME=localhost
-
 cat > /etc/nginx/sites-available/default << EOF
 server {
     listen 443 ssl;

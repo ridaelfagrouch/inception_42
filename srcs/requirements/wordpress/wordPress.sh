@@ -13,12 +13,12 @@ mv /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
 
 
 # change the wp-config.php file
-sed -i 's/database_name_here/mydatabase/g' /var/www/html/wp-config.php
-sed -i 's/username_here/rel-fagr/g' /var/www/html/wp-config.php
-sed -i 's/password_here/123456789/g' /var/www/html/wp-config.php
+sed -i "s/database_name_here/$DB_NAME/g" /var/www/html/wp-config.php
+sed -i "s/username_here/$DB_USER/g" /var/www/html/wp-config.php
+sed -i "s/password_here/$DB_PASSWORD/g" /var/www/html/wp-config.php
 sed -i 's/localhost/mariadb/g' /var/www/html/wp-config.php
 # Install WordPress
-wp core install --allow-root --url=localhost --title="My WordPress Site" --admin_user=admin --admin_password=admin --admin_email=reda@gmail.com
+wp core install --allow-root --url=localhost --title="My WordPress Site" --admin_user=$ADMIN_USER --admin_password=$ADMIN_PASSWORD --admin_email=$ADMIN_EMAIL
 
 
 # Set ownership and permissions for the WordPress files

@@ -10,14 +10,13 @@ sed -i "s/bind-address.*/bind-address = 0.0.0.0/g" /etc/mysql/mariadb.conf.d/50-
 # For example, create a new database and user
 # sleep 100000
 mysql -u root <<EOSQL
-    CREATE DATABASE mydatabase;
-    CREATE USER 'rel-fagr'@'%' IDENTIFIED BY '123456789';
-    GRANT ALL PRIVILEGES ON mydatabase.* TO 'rel-fagr'@'%';
+    CREATE DATABASE $DB_NAME;
+    CREATE USER '$DB_USER'@'%' IDENTIFIED BY '$DB_PASSWORD';
+    GRANT ALL PRIVILEGES ON mydatabase.* TO '$DB_USER'@'%';
     FLUSH PRIVILEGES;
 EOSQL
 
 # # Stop the MariaDB service
-# /etc/init.d/mysql stop
 kill  $(cat /var/run/mysqld/mysqld.pid)
 
 mysqld

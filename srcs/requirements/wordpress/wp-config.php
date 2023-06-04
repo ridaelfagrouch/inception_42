@@ -1,13 +1,13 @@
 <?php
 
 /** The name of the database for WordPress */
-define( 'DB_NAME', 'mydatabase' );
+define( 'DB_NAME', $DB_NAME );
 
 /** MySQL database username */
-define( 'DB_USER', 'rel-fagr' );
+define( 'DB_USER', $DB_USER );
 
 /** MySQL database password */
-define( 'DB_PASSWORD', '123456789' );
+define( 'DB_PASSWORD', $DB_PASSWORD );
 
 /** MySQL hostname */
 define( 'DB_HOST', 'mariadb:3306' );
