@@ -4,6 +4,22 @@ networks:
   inception:
     name: inception
 
+volumes:
+  mariadb:
+    name: mariadb
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/garra/Desktop/inception_42/srcs/mariadb
+      o: bind
+  wordpress:
+    name: wordpress
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/garra/Desktop/inception_42/srcs/wordpress
+      o: bind
+
 services:
   nginx:
     build: ./requirements/nginx
@@ -11,7 +27,7 @@ services:
     ports:
       - "443:443"
     volumes:
-      - ./wordpress:/var/www/html:delegated
+      - wordpress:/var/www/html
     depends_on:
       - wordpress
     networks:
@@ -26,12 +42,14 @@ services:
       - inception
     env_file:
       - .env
+    volumes:
+      - mariadb:/var/lib/mysql
     restart: always
   wordpress: 
     build: ./requirements/wordpress
     container_name: wordpress
     volumes:
-     - ./wordpress:/var/www/html:delegated
+     - wordpress:/var/www/html
     depends_on:
       - mariadb
     networks:
@@ -39,3 +57,11 @@ services:
     env_file:
       - .env
     restart: always
+  # adminer:
+  #   image: ./requirements/adminer
+  #   container_name: adminer
+  #   ports:
+  #     - "8080:8080"
+  #   networks:
+  #     - inception
+  #   restart: always

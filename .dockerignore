@@ -2,3 +2,4 @@
 .vscode
 .yarn-cache
 .yarn-cache/
+.env

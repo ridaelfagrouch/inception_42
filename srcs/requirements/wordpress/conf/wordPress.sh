@@ -20,6 +20,8 @@ sed -i 's/localhost/mariadb/g' /var/www/html/wp-config.php
 # Install WordPress
 wp core install --allow-root --url=localhost --title="My WordPress Site" --admin_user=$ADMIN_USER --admin_password=$ADMIN_PASSWORD --admin_email=$ADMIN_EMAIL
 
+wp user create --allow-root $USER_NAME $USER_EMAIL --user_pass=$USER_PASSWORD --role=author
+
 
 # Set ownership and permissions for the WordPress files
 # chown -R www-data:www-data /var/www/html

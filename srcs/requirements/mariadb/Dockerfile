@@ -7,6 +7,6 @@ RUN chown mysql:mysql /etc/mysql/mariadb.cnf
 RUN chmod 644 /etc/mysql/mariadb.cnf
 
 # Copy the custom initialization script
-COPY mariadb.sh /docker-entrypoint-initdb.d/mariadb.sh
+COPY ./conf/mariadb.sh /docker-entrypoint-initdb.d/mariadb.sh
 
 CMD ["bash", "/docker-entrypoint-initdb.d/mariadb.sh"]
