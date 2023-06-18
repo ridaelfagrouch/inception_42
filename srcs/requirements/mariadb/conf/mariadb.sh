@@ -15,6 +15,6 @@ mysql -u root <<EOSQL
 EOSQL
 
 # # Stop the MariaDB service
-kill  $(cat /var/run/mysqld/mysqld.pid)
+kill  `cat /var/run/mysqld/mysqld.pid`
 
 mysqld
