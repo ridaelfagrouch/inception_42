@@ -14,7 +14,6 @@ mysql -u root <<EOSQL
     FLUSH PRIVILEGES;
 EOSQL
 
-
 # # Stop the MariaDB service
 kill  $(cat /var/run/mysqld/mysqld.pid)
 

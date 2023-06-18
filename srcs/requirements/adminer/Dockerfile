@@ -1,22 +1,9 @@
-#setup adminer dockerfile
 FROM debian:buster
 
-RUN apt-get update && apt-get install -y wget
-RUN apt-get install -y php7.3 php-mysql php-fpm
-RUN rm -rf /var/lib/apt/lists/*
+RUN apt update -y && apt install -y php php-mysql && apt install -y wget && wget "http://www.adminer.org/latest.php" -O /var/www/html/adminer.php
 
-# Create the /run/php directory
-RUN mkdir -p /run/php
+RUN rm -rf /var/www/html/index.html
+RUN chown www-data:www-data /var/www/html/adminer.php
+RUN chmod 777 /var/www/html/adminer.php
 
-WORKDIR /var/www/html
-
-RUN rm -rf /var/www/html/*
-
-# Install curl
-RUN apt-get update && apt-get install -y curl
-
-COPY ./conf/adminer.sh /adminer.sh
-
-CMD ["bash", "/adminer.sh"]
-
-
+CMD ["php", "-S", "0.0.0.0:3000", "-t", "/var/www/html"]
