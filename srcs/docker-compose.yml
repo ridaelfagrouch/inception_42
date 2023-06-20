@@ -65,3 +65,13 @@ services:
     networks:
       - inception
     restart: always
+  static_web_site:
+    build: ./requirements/bonus/web
+    container_name: static_web_site
+    ports:
+      - "3001:3001"
+    networks:
+      - inception
+    env_file:
+      - .env
+    restart: always
