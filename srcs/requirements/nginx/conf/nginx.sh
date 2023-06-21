@@ -5,8 +5,7 @@ server {
     listen 443 ssl;
     listen [::]:443 ssl;
 
-    server_name ${DOMAIN_NAME};
-
+    server_name www.rel-fagr.42.fr rel-fagr.42.fr;
     ssl_certificate /etc/nginx/ssl/test.crt;
     ssl_certificate_key /etc/nginx/ssl/test.key;
     
