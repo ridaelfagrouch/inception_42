@@ -10,20 +10,20 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/garra/Desktop/inception_42/srcs/mariadb
+      device: /home/garra/data/mariadb
       o: bind
   wordpress:
     name: wordpress
     driver: local
     driver_opts:
       type: none
-      device: /home/garra/Desktop/inception_42/srcs/wordpress
+      device: /home/garra/data/wordpress
       o: bind
 
 services:
   mariadb:
     build: ./requirements/mariadb
-    container_name: mariadb
+    container_name: mariadbmake
     networks:
       - inception
     env_file:

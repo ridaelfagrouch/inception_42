@@ -22,11 +22,6 @@ wp core install --allow-root --url=localhost --title="My WordPress Site" --admin
 
 wp user create --allow-root $USER_NAME $USER_EMAIL --user_pass=$USER_PASSWORD --role=author
 
-
-# Set ownership and permissions for the WordPress files
-# chown -R www-data:www-data /var/www/html
-# chmod -R 755 /var/www/html
-
 # Modify php-fpm config file to listen on port 9000 instead of using a socket
 sed -i 's/\/run\/php\/php7.3-fpm.sock/9000/g' /etc/php/7.3/fpm/pool.d/www.conf
 
